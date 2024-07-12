@@ -11,6 +11,11 @@ class Contacto:
     def user_input(cls):
         nombre = input('Ingrese el nombre de contacto: ')
         edad = input('Ingrese la edad: ')
-        favorito = input('Contacto favorito: si/no')
+        def favorito_bool():
+            favorito = input('Contacto favorito: si/no')
+            while favorito not in ['True','False']:
+                return '!Error el tipo de dato debe ser booleano'
+            return favorito
+        favorito = favorito_bool()
 
         return cls(nombre,edad,favorito)
