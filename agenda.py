@@ -3,72 +3,82 @@ import pymongo
 
 
 class DatabaseAgenda:
-        
-    try:
-        client = pymongo.MongoClient("mongodb://localhost:27017/")
-
-        db = client["agenda"]
-        print("conectado a mongo")
-
-    except Exception as e:
-        print("error mongo")
-
-
-    try:
-        collection = db["contactos"]
-        print("conecado a contactos")
-
-    except Exception as e:
-        print("error")
-
-
-    def insert(self, contactos):
+    def __init__(self):
         try:
-            data = {
-                '_id':contactos.cid,
-                'nombre': contactos.nombre,
-                'edad': contactos.edad,
-                'datos_de_contacto': [
-                    {
-                        'categoria': contactos.categoria,
-                        'direccion': contactos.direccion,
-                        'telefono': contactos.telefono
-                    }
-                ] ,
-                'favorito': contactos.favorito
-
-            }
-        
-            cid = self.collection.insert_one(data).inserted_id
-            print('Contacto insertado ID:{cid}')
+            self.client = pymongo.MongoClient("mongodb://localhost:27017/")
+            self.db = self.client["agenda"]
+            self.collection = self.db["contactos"]
+            print("Conectado a MongoDB y colección contactos.")
         except Exception as e:
-            print("error: {e}")
+            print(f"Error al conectar a MongoDB: {e}")
 
-    def fetch_one(self, cid):
-        data = self.collection.find_one({'_id': cid})
-        return data
+    def user_input(self):
+        nombre = input('Ingrese el nombre de contacto: ')
+        edad = input('Ingrese la edad: ')
 
-    def fetch_all(self):
-        data = self.collection.find()
-        return data
+        categoria = input('Ingrese la categoría de contacto (personal/trabajo, etc.): ')
+        direccion = input('Ingrese la dirección: ')
+        telefono = input('Ingrese el teléfono: ')
+        datos_de_contacto = [
+            {
+                'categoria': categoria,
+                'direccion': direccion,
+                'telefono': telefono
+            }
+        ]
 
-    def update(self, cid, contactos):
-        data = {
-            '_id':contactos.cid,
-            'nombre': contactos.nombre,
-            'edad': contactos.edad,
-            'datos_de_contacto': [
-                    {
-                        'categoria': contactos.categoria,
-                        'direccion': contactos.direccion,
-                        'telefono': contactos.telefono
-                    }
-                ] ,
-                'favorito': contactos.favorito
-    }
-        self.collection.update_one({'_id':cid}, {'$set': data})
+        def favorito_bool():
+            while True:
+                favorito = input('Contacto favorito (si/no): ').lower()
+                if favorito in ['si', 'no']:
+                    return favorito == 'si'
+                print('!Error el tipo de dato debe ser si o no')
+
+        favorito = favorito_bool()
+
+        return {
+            'nombre': nombre,
+            'edad': edad,
+            'datos_de_contacto': datos_de_contacto,
+            'favorito': favorito
+        }
+
+    def insert(self):
+        try:
+            data = self.user_input()
+            inserted_id = self.collection.insert_one(data).inserted_id
+            print(f'Contacto insertado ID: {inserted_id}')
+        except Exception as e:
+            print(f"Error al insertar el contacto: {e}")
 
 
-    def delete(self, cid):
-        self.collection.delete_one({'_id':cid})
+
+agenda = DatabaseAgenda()
+agenda.insert()
+    # def fetch_one(self, cid):
+    #     data = self.collection.find_one({'_id': cid})
+    #     return data
+
+    # def fetch_all(self):
+    #     data = self.collection.find()
+    #     return data
+
+    # def update(self, contactos):
+    #     data = {
+    #         'nombre': contactos.nombre,
+    #         'edad': contactos.edad,
+    #         'datos_de_contacto': [
+    #                 {
+    #                     'categoria': contactos.categoria,
+    #                     'direccion': contactos.direccion,
+    #                     'telefono': contactos.telefono
+    #                 }
+    #             ] ,
+    #             'favorito': contactos.favorito
+    # }
+    #     self.collection.update_one( {'$set': data})
+
+
+    # def delete(self, cid):
+    #     self.collection.delete_one({'_id':cid})
 
