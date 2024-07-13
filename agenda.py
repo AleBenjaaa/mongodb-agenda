@@ -71,15 +71,27 @@ class DatabaseAgenda:
                 print('No se encontraron contactos con esa búsqueda.')
         except Exception as e:
             print(f"Error al buscar el contacto: {e}")
+    
+    def listar_agenda(self):
+        try:
+            resultados = self.collection.find().sort([("favorito", pymongo.DESCENDING)])
+            resultado_encontrado = False
+            for resultado in resultados:
+                print(f'Contacto encontrado: {resultado}')
+                resultado_encontrado = True
+            if not resultado_encontrado:
+                print('No hay contactos agendados.')
+        except Exception as e:
+            print(f"Error al listar los contactos: {e}")
 
 def menu():
     agenda = DatabaseAgenda()
     while True:
         print("\nMenu:")
         print("1. Insertar contacto")
-        print("2. Buscar contacto por ID")
-        print("3. Buscar contacto por ID, nombre o teléfono")
-        print("4. Salir")
+        print("2. Buscar contacto por ID, nombre o teléfono")
+        print('3. Listar contactos')
+        print("0. Salir")
         choice = input("Seleccione una opción: ")
         
         if choice == '1':
@@ -87,6 +99,8 @@ def menu():
         elif choice == '2':
             agenda.filtro_de_busqueda()
         elif choice == '3':
+            agenda.listar_agenda()
+        elif choice == '0':
             print("Saliendo del programa.")
             break
         else:
