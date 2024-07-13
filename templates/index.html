@@ -96,42 +96,37 @@
                                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgdmlld0JveD0iMCAwIDE3MCAxNzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF80MTFfNjM3MSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiPgo8cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF80MTFfNjM3MSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMEgxNzBWMTcwSDBWMFoiIGZpbGw9IiNEQ0RGRTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDUuODUgNjMuODc1OEMxMDUuODUgNzUuMzkwNyA5Ni41MTUyIDg0LjcyNTQgODUuMDAwMyA4NC43MjU0QzczLjQ4NTQgODQuNzI1NCA2NC4xNTA4IDc1LjM5MDcgNjQuMTUwOCA2My44NzU4QzY0LjE1MDggNTIuMzYwOSA3My40ODU0IDQzLjAyNjIgODUuMDAwMyA0My4wMjYyQzk2LjUxNTIgNDMuMDI2MiAxMDUuODUgNTIuMzYwOSAxMDUuODUgNjMuODc1OFpNNjIuNjYzMSA5My42NjA5SDEwNy4zNDFDMTE2LjM4OCA5My42NjA5IDEyMy43MjMgMTAwLjk5NSAxMjMuNzIzIDExMC4wNDNDMTIzLjcyMyAxMTkuMDkgMTE2LjM4OCAxMjYuNDI1IDEwNy4zNDEgMTI2LjQyNUg2Mi42NjMxQzUzLjYxNTYgMTI2LjQyNSA0Ni4yODEyIDExOS4wOSA0Ni4yODEyIDExMC4wNDNDNDYuMjgxMiAxMDAuOTk1IDUzLjYxNTYgOTMuNjYwOSA2Mi42NjMxIDkzLjY2MDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+Cjwvc3ZnPgo=" srcset="">
                                     </div>
                                     
-                                    <form class="row g-3" action="/agenda" method="POST">
+                                    <form class="row g-3" action="/contacto" method="POST">
                                         <div class="col-md-6 mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="Nombre">
+                                            <label for="Nombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="Nombre" name="nombre">
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Edad</label>
-                                            <input type="text" class="form-control" id="Edad">
+                                            <label for="Edad" class="form-label">Edad</label>
+                                            <input type="text" class="form-control" id="Edad" name="edad">
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Categoria</label>
-                                            <input type="text" class="form-control" id="Edad">
+                                            <label for="Categoria" class="form-label">Categoría</label>
+                                            <input type="text" class="form-control" id="Categoria" name="categoria">
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Teléfono</label>
-                                            <input type="text" class="form-control" id="Edad">
+                                            <label for="Telefono" class="form-label">Teléfono</label>
+                                            <input type="text" class="form-control" id="Telefono" name="telefono">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Dirección</label>
-                                            <input type="text" class="form-control" id="Edad">
+                                            <label for="Direccion" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" id="Direccion" name="direccion">
                                         </div>
-
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" role="switch"
-                                                id="flexSwitchCheckDefault">
-                                            <label class="form-check-label"
-                                                for="flexSwitchCheckDefault">Favorito</label>
+                                            <input class="form-check-input" type="checkbox" id="Favorito" name="favorito">
+                                            <label class="form-check-label" for="Favorito">Favorito</label>
                                         </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                </div>
-                                </form>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </form>
+                                    
                             </div>
                         </div>
                     </div>
