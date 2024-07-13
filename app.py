@@ -1,4 +1,6 @@
 from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
+from bson import json_util
+import json
 from contacto import Contacto
 import database as dbase
 
@@ -8,7 +10,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    contactos = list(db.contactos.find())  # Convertir el cursor en una lista
+    return render_template('index.html', contactos=contactos)
 
 @app.route('/contacto', methods=['POST'])
 def nuevo_contacto():

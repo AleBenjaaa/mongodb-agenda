@@ -29,7 +29,6 @@
                 </form>
             </div>
         </div>
-
     </nav>
 </header>
 
@@ -39,7 +38,6 @@
         <nav class="nav flex-column d-inline-block">
             <a class="nav-link active" aria-current="page" href="#">Todos los contactos</a>
             <a class="nav-link" href="#">Favoritos</a>
-
         </nav>
         <div class="container mt-2 mb-4">
             <div class="row row-col-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
@@ -50,28 +48,25 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Número de teléfono</th>
+                                    <th scope="col">Edad</th>
+                                    <th scope="col">Categoría</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Dirección</th>
                                     <th scope="col">Favorito</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for contacto in contactos %}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</a></td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ contacto.nombre }}</td>
+                                    <td>{{ contacto.edad }}</td>
+                                    <td>{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}</td>
+                                    <td>{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}</td>
+                                    <td>{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}</td>
+                                    <td>{{ 'Sí' if contacto.favorito else 'No' }}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -93,7 +88,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="container mb-4" style="text-align: center; width: 90%; max-width: 536px;">
-                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgdmlld0JveD0iMCAwIDE3MCAxNzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF80MTFfNjM3MSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiPgo8cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF80MTFfNjM3MSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMEgxNzBWMTcwSDBWMFoiIGZpbGw9IiNEQ0RGRTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDUuODUgNjMuODc1OEMxMDUuODUgNzUuMzkwNyA5Ni41MTUyIDg0LjcyNTQgODUuMDAwMyA4NC43MjU0QzczLjQ4NTQgODQuNzI1NCA2NC4xNTA4IDc1LjM5MDcgNjQuMTUwOCA2My44NzU4QzY0LjE1MDggNTIuMzYwOSA3My40ODU0IDQzLjAyNjIgODUuMDAwMyA0My4wMjYyQzk2LjUxNTIgNDMuMDI2MiAxMDUuODUgNTIuMzYwOSAxMDUuODUgNjMuODc1OFpNNjIuNjYzMSA5My42NjA5SDEwNy4zNDFDMTE2LjM4OCA5My42NjA5IDEyMy43MjMgMTAwLjk5NSAxMjMuNzIzIDExMC4wNDNDMTIzLjcyMyAxMTkuMDkgMTE2LjM4OCAxMjYuNDI1IDEwNy4zNDEgMTI2LjQyNUg2Mi42NjMxQzUzLjYxNTYgMTI2LjQyNSA0Ni4yODEyIDExOS4wOSA0Ni4yODEyIDExMC4wNDNDNDYuMjgxMiAxMDAuOTk1IDUzLjYxNTYgOTMuNjYwOSA2Mi42NjMxIDkzLjY2MDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+Cjwvc3ZnPgo=" srcset="">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgdmlld0JveD0iMCAwIDE3MCAxNzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF80MTFfNjM3MSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiPgo8cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF80MTFfNjM3MSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMEgxNzBWMTcwSDBWMFoiIGZpbGw9IiNEQ0RGRTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDUuODUgNjMuODc1OEMxMDUuODUgNzUuMzkwNyA5Ni41MTUyIDg0LjcyNTQgODUuMDAwMyA4NC43MjU0QzczLjQ4NTQgODQuNzI1NCA2NC4xNTA4IDc1LjM5MDcgNjQuMTUwOCA2My44NzU4QzY0LjE1MDggNTIuMzYwOSA3My40ODU0IDQzLjAyNjIgODUuMDAwMyA0My4wMjYyQzk2LjUxNTIgNDMuMDI2MiAxMDUuODUgNTIuMzYwOSAxMDUuODUgNjMuODc1OFpNNjIuNjYzMSA5My42NjA5SDEwNy4zNDFDMTE2LjM4OCA5My42NjA5IDEyMy43MjMgMTAwLjk5NSAxMjMuNzIzIDExMC4wNDNDMTIzLjcyMyAxMTkuMDkgMTE2LjM4OCAxMjYuNDI1IDEwNy4zNDFDMTA3LjM0MSAxMjYuNDI1IDYyLjY2MzEgMTI2LjQyNSA2Mi42NjMxIDExMC4wNDNDNjIuNjYzMSAxMDAuOTk1IDUzLjYxNTYgOTMuNjYwOSA2Mi42NjMxIDkzLjY2MDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+Cjwvc3ZnPgo=" srcset="">
                                     </div>
                                     
                                     <form class="row g-3" action="/contacto" method="POST">
