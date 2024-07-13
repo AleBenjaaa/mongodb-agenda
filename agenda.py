@@ -109,6 +109,42 @@ class DatabaseAgenda:
         except Exception as e:
             print(f"Error al eliminar el contacto: {e}")
 
+    def modificar_contacto(self):
+        try:
+            opcion = input("Ingrese el ID, nombre o número de teléfono del contacto a modificar: ")
+
+            if ObjectId.is_valid(opcion):
+                contacto = self.collection.find_one({'_id': ObjectId(opcion)})
+            else:
+                contacto = self.collection.find_one({"$or": [{"nombre": opcion}, {"datos_de_contacto.telefono": opcion}]})
+
+            if contacto:
+                print(f'Contacto encontrado: {contacto}')
+
+                nueva_categoria = input('Ingrese la nueva categoría de contacto: ')
+                nueva_direccion = input('Ingrese la nueva dirección: ')
+                nuevo_telefono = input('Ingrese el nuevo teléfono: ')
+
+                nuevo_datos_de_contacto = [{
+                    'categoria': nueva_categoria,
+                    'direccion': nueva_direccion,
+                    'telefono': nuevo_telefono
+                }]
+
+                contacto['datos_de_contacto'] = nuevo_datos_de_contacto
+                resultado = self.collection.replace_one({'_id': contacto['_id']}, contacto)
+
+                if resultado.modified_count == 1:
+                    print(f'Contacto modificado correctamente.')
+                else:
+                    print(f'No se pudo modificar el contacto.')
+
+            else:
+                print(f"No se encontró ningún contacto con el ID, nombre o teléfono {opcion}.")
+
+        except Exception as e:
+            print(f"Error al modificar el contacto: {e}")
+
 
 def menu():
     agenda = DatabaseAgenda()
@@ -117,7 +153,8 @@ def menu():
         print("1. Insertar contacto")
         print("2. Buscar contacto por ID, nombre o teléfono")
         print('3. Listar contactos')
-        print("4.Eliminar contacto por ID, nombre o teléfono")
+        print("4. Eliminar contacto por ID, nombre o teléfono")
+        print("5. Modificar contacto por ID, nombre o teléfono")
         print("0. Salir")
         choice = input("Seleccione una opción: ")
         
@@ -129,6 +166,8 @@ def menu():
             agenda.listar_agenda()
         elif choice == '4':
             agenda.eliminar_contacto()
+        elif choice == '5':
+            agenda.modificar_contacto()
         elif choice == '0':
             print("Saliendo del programa.")
             break
@@ -136,5 +175,3 @@ def menu():
             print("Opción no válida. Por favor, intente de nuevo.")
 
 menu()
-
-
