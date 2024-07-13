@@ -84,6 +84,32 @@ class DatabaseAgenda:
         except Exception as e:
             print(f"Error al listar los contactos: {e}")
 
+    def eliminar_contacto(self):
+        try:
+            opcion = input("Ingrese el ID, nombre o número de teléfono del contacto a eliminar: ")
+
+            if ObjectId.is_valid(opcion):
+                resultado = self.collection.delete_one({'_id': ObjectId(opcion)})
+                if resultado.deleted_count == 1:
+                    print(f"Contacto con ID {opcion} eliminado correctamente.")
+                    return
+
+            resultado = self.collection.delete_many({"nombre": opcion})
+            if resultado.deleted_count > 0:
+                print(f"Se eliminaron {resultado.deleted_count} contactos con el nombre {opcion}.")
+                return
+
+            resultado = self.collection.delete_many({"datos_de_contacto.telefono": opcion})
+            if resultado.deleted_count > 0:
+                print(f"Se eliminaron {resultado.deleted_count} contactos con el teléfono {opcion}.")
+                return
+
+            print(f"No se encontraron contactos con el ID, nombre o teléfono {opcion}.")
+        
+        except Exception as e:
+            print(f"Error al eliminar el contacto: {e}")
+
+
 def menu():
     agenda = DatabaseAgenda()
     while True:
@@ -91,6 +117,7 @@ def menu():
         print("1. Insertar contacto")
         print("2. Buscar contacto por ID, nombre o teléfono")
         print('3. Listar contactos')
+        print("4.Eliminar contacto por ID, nombre o teléfono")
         print("0. Salir")
         choice = input("Seleccione una opción: ")
         
@@ -100,6 +127,8 @@ def menu():
             agenda.filtro_de_busqueda()
         elif choice == '3':
             agenda.listar_agenda()
+        elif choice == '4':
+            agenda.eliminar_contacto()
         elif choice == '0':
             print("Saliendo del programa.")
             break
@@ -107,3 +136,5 @@ def menu():
             print("Opción no válida. Por favor, intente de nuevo.")
 
 menu()
+
+
