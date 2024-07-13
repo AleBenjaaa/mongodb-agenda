@@ -21,14 +21,17 @@ def nuevo_contacto():
     favorito = request.form.get('favorito', 'off') == 'on'  # Usar get() con valor predeterminado
 
     if nombre and edad and categoria and telefono and direccion:
-        contacto = Contacto(nombre, edad, categoria, telefono, direccion, favorito)
+        datos_de_contacto = [{
+            'categoria': categoria,
+            'telefono': telefono,
+            'direccion': direccion
+        }]
+        contacto = Contacto(nombre, edad, datos_de_contacto, favorito)
         contacto_collection.insert_one(contacto.to_dict())  # Cambiado a contacto_collection
         response = jsonify({
             'nombre': nombre,
             'edad': edad,
-            'categoria': categoria,
-            'telefono': telefono,
-            'direccion': direccion,
+            'datos_de_contacto': datos_de_contacto,
             'favorito': favorito
         })
         return redirect(url_for('home'))
