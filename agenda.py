@@ -1,6 +1,5 @@
 import pymongo
-
-
+from bson import ObjectId
 
 class DatabaseAgenda:
     def __init__(self):
@@ -15,7 +14,6 @@ class DatabaseAgenda:
     def user_input(self):
         nombre = input('Ingrese el nombre de contacto: ')
         edad = input('Ingrese la edad: ')
-
         categoria = input('Ingrese la categoría de contacto (personal/trabajo, etc.): ')
         direccion = input('Ingrese la dirección: ')
         telefono = input('Ingrese el teléfono: ')
@@ -51,34 +49,56 @@ class DatabaseAgenda:
         except Exception as e:
             print(f"Error al insertar el contacto: {e}")
 
+    def fetch_one(self):
+        try:
+            id = input("Ingrese el ID del contacto a buscar: ")
+            data = self.collection.find_one({'_id': ObjectId(id)})
+            if data:
+                print(f'Contacto encontrado: {data}')
+            else:
+                print('Contacto no encontrado.')
+        except Exception as e:
+            print(f"Error al buscar el contacto: {e}")
 
+    def search(self):
+        try:
+            buscar_filtro = input("Ingrese el nombre o teléfono para buscar: ")
+            query = {
+                "$or": [
+                    {"nombre": {"$regex": buscar_filtro, "$options": "i"}},
+                    {"datos_de_contacto.telefono": {"$regex": buscar_filtro, "$options": "i"}}
+                ]
+            }
+            resultados = self.collection.find(query)
+            resultado_encontrado = False
+            for resultado in resultados:
+                print(f'Contacto encontrado: {resultado}')
+                resultado_encontrado = True
+            if not resultado_encontrado:
+                print('No se encontraron contactos con esa búsqueda.')
+        except Exception as e:
+            print(f"Error al buscar el contacto: {e}")
 
-agenda = DatabaseAgenda()
-agenda.insert()
-    # def fetch_one(self, cid):
-    #     data = self.collection.find_one({'_id': cid})
-    #     return data
+def menu():
+    agenda = DatabaseAgenda()
+    while True:
+        print("\nMenu:")
+        print("1. Insertar contacto")
+        print("2. Buscar contacto por ID")
+        print("3. Buscar contacto por nombre o teléfono")
+        print("4. Salir")
+        choice = input("Seleccione una opción: ")
+        
+        if choice == '1':
+            agenda.insert()
+        elif choice == '2':
+            agenda.fetch_one()
+        elif choice == '3':
+            agenda.search()
+        elif choice == '4':
+            print("Saliendo del programa.")
+            break
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
 
-    # def fetch_all(self):
-    #     data = self.collection.find()
-    #     return data
-
-    # def update(self, contactos):
-    #     data = {
-    #         'nombre': contactos.nombre,
-    #         'edad': contactos.edad,
-    #         'datos_de_contacto': [
-    #                 {
-    #                     'categoria': contactos.categoria,
-    #                     'direccion': contactos.direccion,
-    #                     'telefono': contactos.telefono
-    #                 }
-    #             ] ,
-    #             'favorito': contactos.favorito
-    # }
-    #     self.collection.update_one( {'$set': data})
-
-
-    # def delete(self, cid):
-    #     self.collection.delete_one({'_id':cid})
-
+menu()

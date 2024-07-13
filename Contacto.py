@@ -23,7 +23,7 @@ class Contacto:
 
         def favorito_bool():
             while True:
-                favorito = input('Contacto favorito (si/no): ').lower()
+                favorito = input('Contacto favorito (si/no): ').strip().lower()
                 if favorito in ['si', 'no']:
                     return favorito == 'si'
                 print('!Error el tipo de dato debe ser si o no')
