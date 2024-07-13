@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
 from contacto import Contacto
 import database as dbase
-
+import pymongo
 db = dbase.DatabaseAgenda()
 
 app = Flask(__name__)
@@ -38,6 +38,34 @@ def nuevo_contacto():
         return redirect(url_for('home'))
     else:
         return notFound()
+
+@app.route('/buscar')
+def buscar_contacto():
+    query = request.args.get('query', '')
+    if query:
+        contactos = list(db.contactos.find({
+            "$or": [
+                {"nombre": {"$regex": query, "$options": "i"}},
+                {"edad": {"$regex": query, "$options": "i"}},
+                {"datos_de_contacto.telefono": {"$regex": query, "$options": "i"}},
+                {"datos_de_contacto.direccion": {"$regex": query, "$options": "i"}},
+                {"datos_de_contacto.categoria": {"$regex": query, "$options": "i"}}
+            ]
+        }))
+    else:
+        contactos = list(db.contactos.find())
+    
+    return render_template('index.html', contactos=contactos)
+
+@app.route('/favoritos')
+def mostrar_favoritos():
+    favoritos = list(db.contactos.find({"favorito": True}))
+    return render_template('index.html', contactos=favoritos)
+
+@app.route('/todos_contactos')
+def todos_contactos_favoritos_primero():
+    contactos = list(db.contactos.find().sort([("favorito", pymongo.DESCENDING)]))
+    return render_template('index.html', contactos=contactos)
 
 @app.errorhandler(404)
 def notFound(error=None):

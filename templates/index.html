@@ -52,8 +52,8 @@
                         <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar contacto" aria-label="Search">
+                <form class="d-flex" role="search" method="GET" action="/buscar">
+                    <input class="form-control me-2" type="search" placeholder="Buscar contacto" aria-label="Search" name="query">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
@@ -65,8 +65,9 @@
 
     <div class="d-flex mt-3">
         <nav class="nav flex-column d-inline-block">
-            <a class="nav-link active" aria-current="page" href="#">Todos los contactos</a>
-            <a class="nav-link" href="#">Favoritos</a>
+            <a class="nav-link active" aria-current="page" href="/">Todos los contactos</a>
+            <a class="nav-link" href="/favoritos">Favoritos</a>
+            <a class="nav-link" href="/todos_contactos">Listar favorito primero</a>
         </nav>
         <div class="container mt-2 mb-4">
             <div class="row row-col-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
