@@ -11,6 +11,8 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     contactos = list(db.contactos.find())
+    for contacto in contactos:
+        contacto['_id'] = str(contacto['_id'])  
     return render_template('index.html', contactos=contactos)
 
 @app.route('/contacto/<id>', methods=['POST'])
@@ -96,6 +98,13 @@ def mostrar_favoritos():
 def todos_contactos_favoritos_primero():
     contactos = list(db.contactos.find().sort([("favorito", pymongo.DESCENDING)]))
     return render_template('index.html', contactos=contactos)
+
+@app.route('/eliminar_contacto/<id>', methods=['POST'])
+def eliminar_contacto(id):
+    query = {"_id": ObjectId(id)}
+    db.contactos.delete_one(query)
+    return redirect(url_for('home'))
+
 
 @app.errorhandler(404)
 def notFound(error=None):
