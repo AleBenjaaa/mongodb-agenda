@@ -24,7 +24,7 @@ def actualizar_contacto(id):
     direccion = request.form['direccion']
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono and direccion:
+    if nombre and edad and categoria and telefono:
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
@@ -53,7 +53,7 @@ def nuevo_contacto():
     direccion = request.form['direccion']
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono and direccion:
+    if nombre and edad and categoria and telefono:
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
@@ -61,12 +61,6 @@ def nuevo_contacto():
         }]
         contacto = Contacto(nombre, edad, datos_de_contacto, favorito)
         contacto_collection.insert_one(contacto.to_dict())
-        response = jsonify({
-            'nombre': nombre,
-            'edad': edad,
-            'datos_de_contacto': datos_de_contacto,
-            'favorito': favorito
-        })
         return redirect(url_for('home'))
     else:
         return notFound()
@@ -101,6 +95,8 @@ def todos_contactos_favoritos_primero():
 
 @app.route('/eliminar_contacto/<id>', methods=['POST'])
 def eliminar_contacto(id):
+    if not ObjectId.is_valid(id):
+        return notFound()
     query = {"_id": ObjectId(id)}
     db.contactos.delete_one(query)
     return redirect(url_for('home'))

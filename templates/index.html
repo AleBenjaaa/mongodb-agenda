@@ -213,17 +213,14 @@
                                             <path d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z"/>
                                         </svg>
                                     </button>
-                                    {% for contacto in contactos %}
                                     <!--Boton para eliminar un contacto de la coleccion-->
-                                    <form action="{{ url_for('eliminar_contacto', id=contacto._id) }}" method="post" style="display: inline;">
+                                    <form id="deleteContactForm" method="post" style="display: inline;">
                                         <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                                                 <path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/>
                                             </svg>
                                         </button>
                                     </form>
-                                    {% endfor %}
-                          
                                 </div>
                             </div>
                         </div>
@@ -367,6 +364,9 @@
         editButton.setAttribute('data-telefono', telefono);
         editButton.setAttribute('data-direccion', direccion);
         editButton.setAttribute('data-favorito', favorito);
+
+        var deleteForm = document.getElementById('deleteContactForm');
+        deleteForm.action = '/eliminar_contacto/' + id;
     });
 
     var editContactModal = document.getElementById('editContactModal');
