@@ -10,9 +10,9 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .table-cell {
-        position: relative;
-        text-align: left;
-        vertical-align: middle;
+            position: relative;
+            text-align: left;
+            vertical-align: middle;
         }
 
         .heart-icon {
@@ -23,7 +23,6 @@
             width: 100%;
         }
 
-        
         .btn-invisible {
             display: flex;
             position: absolute;
@@ -37,7 +36,6 @@
             background: none;
             cursor: pointer;
         }
-
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -66,7 +64,6 @@
 </header>
 
 <body>
-
     <div class="d-flex mt-3">
         <nav class="nav flex-column d-inline-block">
             <a class="nav-link active" aria-current="page" href="/">Todos los contactos</a>
@@ -95,84 +92,91 @@
                                     <th scope="row" class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ loop.index }}
                                     </th>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.nombre }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.edad }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}
                                     </td>
                                     <td class="table-cell">
-                                        <button type="button" class="btn-invisible " data-bs-toggle="modal" 
+                                        <button type="button" class="btn-invisible" data-bs-toggle="modal" 
                                                 data-bs-target="#contactoModal" 
+                                                data-id="{{ contacto._id }}"
                                                 data-nombre="{{ contacto.nombre }}"
                                                 data-edad="{{ contacto.edad }}"
                                                 data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
                                                 data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
-                                                data-favorito="{{ 'Sí' if contacto.favorito else 'No' }}">
+                                                data-favorito="{{ contacto.favorito }}">
                                             {% if contacto.favorito %}
                                                 <i class="fas fa-heart "></i>
                                             {% else %}
@@ -186,7 +190,7 @@
                         </table>
                     </div>
 
-                    <!-- Modal -->
+                    <!-- Modal para ver detalles del contacto -->
                     <div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -203,34 +207,83 @@
                                     <p><strong>Favorito:</strong> <span id="modalFavorito"></span></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z"/></svg>
+                                    <!-- Botón para abrir el modal de edición con los datos del contacto -->
+                                    <button type="button" class="btn btn-primary" id="editContactButton" data-bs-toggle="modal" data-bs-target="#editContactModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                            <path d="M80 0v-160h800V0H80Zm160-320h56l312-311-29-29-28-28-311 312v56Zm-80 80v-170l448-447q11-11 25.5-17t30.5-6q16 0 31 6t27 18l55 56q12 11 17.5 26t5.5 31q0 15-5.5 29.5T777-687L330-240H160Zm560-504-56-56 56 56ZM608-631l-29-29-28-28 57 57Z"/>
+                                        </svg>
                                     </button>
-                                    <button type="button" class="btn btn-danger"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar" data-bs="modal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg></button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar" data-bs="modal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                            <path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Button trigger modal -->
 
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
+                    <!-- Modal para editar contacto -->
+                    <div class="modal fade" id="editContactModal" tabindex="-1" aria-labelledby="editContactModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Contacto</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <h5 class="modal-title" id="editContactModalLabel">Editar Contacto</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container mb-4" style="text-align: center; width: 90%; max-width: 536px;">
                                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgdmlld0JveD0iMCAwIDE3MCAxNzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF80MTFfNjM3MSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiPgo8cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF80MTFfNjM3MSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMEgxNzBWMTcwSDBWMFoiIGZpbGw9IiNEQ0RGRTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDUuODUgNjMuODc1OEMxMDUuODUgNzUuMzkwNyA5Ni41MTUyIDg0LjcyNTQgODUuMDAwMyA4NC43MjU0QzczLjQ4NTQgODQuNzI1NCA2NC4xNTA4IDc1LjM5MDcgNjQuMTUwOCA2My44NzU4QzY0LjE1MDggNTIuMzYwOSA3My40ODU0IDQzLjAyNjIgODUuMDAwMyA0My4wMjYyQzk2LjUxNTIgNDMuMDI2MiAxMDUuODUgNTIuMzYwOSAxMDUuODUgNjMuODc1OFpNNjIuNjYzMSA5My42NjA5SDEwNy4zNDFDMTE2LjM4OCA5My42NjA5IDEyMy43MjMgMTAwLjk5NSAxMjMuNzIzIDExMC4wNDNDMTIzLjcyMyAxMTkuMDkgMTE2LjM4OCAxMjYuNDI1IDEwNy4zNDEgMTI2LjQyNUg2Mi42NjMxQzUzLjYxNTYgMTI2LjQyNSA0Ni4yODEyIDExOS4wOSA0Ni4yODEyIDExMC4wNDNDNDYuMjgxMiAxMDAuOTk1IDUzLjYxNTYgOTMuNjYwOSA2Mi42NjMxIDkzLjY2MDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+Cjwvc3ZnPgo=" srcset="">
                                     </div>
-                                    
+                                    <form class="row g-3" id="editContactForm" method="POST">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="editNombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="editNombre" name="nombre">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="editEdad" class="form-label">Edad</label>
+                                            <input type="text" class="form-control" id="editEdad" name="edad">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="editCategoria" class="form-label">Categoría</label>
+                                            <input type="text" class="form-control" id="editCategoria" name="categoria">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="editTelefono" class="form-label">Teléfono</label>
+                                            <input type="text" class="form-control" id="editTelefono" name="telefono">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="editDireccion" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" id="editDireccion" name="direccion">
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="editFavorito" name="favorito">
+                                            <label class="form-check-label" for="editFavorito">Favorito</label>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal para nuevo contacto -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Contacto</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container mb-4" style="text-align: center; width: 90%; max-width: 536px;">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgdmlld0JveD0iMCAwIDE3MCAxNzAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF80MTFfNjM3MSIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxNzAiPgo8cmVjdCB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE3MCIgcng9Ijg1IiBmaWxsPSIjQzRDNEM0Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF80MTFfNjM3MSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMEgxNzBWMTcwSDBWMFoiIGZpbGw9IiNEQ0RGRTMiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMDUuODUgNjMuODc1OEMxMDUuODUgNzUuMzkwNyA5Ni41MTUyIDg0LjcyNTQgODUuMDAwMyA4NC43MjU0QzczLjQ4NTQgODQuNzI1NCA2NC4xNTA4IDc1LjM5MDcgNjQuMTUwOCA2My44NzU4QzY0LjE1MDggNTIuMzYwOSA3My40ODU0IDQzLjAyNjIgODUuMDAwMyA0My4wMjYyQzk2LjUxNTIgNDMuMDI2MiAxMDUuODUgNTIuMzYwOSAxMDUuODUgNjMuODc1OFpNNjIuNjYzMSA5My42NjA5SDEwNy4zNDFDMTE2LjM4OCA5My42NjA5IDEyMy43MjMgMTAwLjk5NSAxMjMuNzIzIDExMC4wNDNDMTIzLjcyMyAxMTkuMDkgMTE2LjM4OCAxMjYuNDI1IDEwNy4zNDEgMTI2LjQyNUg2Mi42NjMxQzUzLjYxNTYgMTI2LjQyNSA0Ni4yODEyIDExOS4wOSA0Ni4yODEyIDExMC4wNDNDNDYuMjgxMiAxMDAuOTk1IDUzLjYxNTYgOTMuNjYwOSA2Mi42NjMxIDkzLjY2MDlaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+Cjwvc3ZnPgo=" srcset="">
+                                    </div>
                                     <form class="row g-3" action="/contacto" method="POST">
                                         <div class="col-md-6 mb-3">
                                             <label for="Nombre" class="form-label">Nombre</label>
@@ -261,7 +314,7 @@
                                             <button type="submit" class="btn btn-primary">Guardar</button>
                                         </div>
                                     </form>
-                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -275,8 +328,7 @@
             data-bs-target="#exampleModal">
             <b>+</b>
         </button>
-
-         </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -292,6 +344,7 @@
         var telefono = button.getAttribute('data-telefono');
         var direccion = button.getAttribute('data-direccion');
         var favorito = button.getAttribute('data-favorito');
+        var id = button.getAttribute('data-id');
 
         document.getElementById('modalNombre').textContent = nombre;
         document.getElementById('modalEdad').textContent = edad;
@@ -299,7 +352,38 @@
         document.getElementById('modalTelefono').textContent = telefono;
         document.getElementById('modalDireccion').textContent = direccion;
         document.getElementById('modalFavorito').textContent = favorito;
+
+        var editButton = document.getElementById('editContactButton');
+        editButton.setAttribute('data-id', id);
+        editButton.setAttribute('data-nombre', nombre);
+        editButton.setAttribute('data-edad', edad);
+        editButton.setAttribute('data-categoria', categoria);
+        editButton.setAttribute('data-telefono', telefono);
+        editButton.setAttribute('data-direccion', direccion);
+        editButton.setAttribute('data-favorito', favorito);
+    });
+
+    var editContactModal = document.getElementById('editContactModal');
+    editContactModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var id = button.getAttribute('data-id');
+        var nombre = button.getAttribute('data-nombre');
+        var edad = button.getAttribute('data-edad');
+        var categoria = button.getAttribute('data-categoria');
+        var telefono = button.getAttribute('data-telefono');
+        var direccion = button.getAttribute('data-direccion');
+        var favorito = button.getAttribute('data-favorito') === 'true';
+
+        var form = document.getElementById('editContactForm');
+        form.action = '/contacto/' + id; // Set the form action to update the contact
+
+        document.getElementById('editNombre').value = nombre;
+        document.getElementById('editEdad').value = edad;
+        document.getElementById('editCategoria').value = categoria;
+        document.getElementById('editTelefono').value = telefono;
+        document.getElementById('editDireccion').value = direccion;
+        document.getElementById('editFavorito').checked = favorito;
     });
 </script>
-
+    
 </html>
