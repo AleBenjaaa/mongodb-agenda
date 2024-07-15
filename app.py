@@ -48,24 +48,29 @@ def actualizar_contacto(id):
 def nuevo_contacto():
     contacto_collection = db.contactos
     nombre = request.form['nombre']
-    edad = request.form['edad']
-    categoria = request.form['categoria']
+    edad = request.form.get('edad')
+    categoria = request.form.get('categoria')
     telefono = request.form['telefono']
-    direccion = request.form['direccion']
+    direccion = request.form.get('direccion')
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono and edad.isdigit():
-        edad = int(edad)  
+    if nombre and telefono:
+        if edad and not edad.isdigit() :
+            return notFound()
+        edad = int(edad) if edad else ''
+
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
             'direccion': direccion
         }]
+
         contacto = Contacto(nombre, edad, datos_de_contacto, favorito)
         contacto_collection.insert_one(contacto.to_dict())
         return redirect(url_for('home'))
     else:
         return notFound()
+
 
 @app.route('/buscar')
 def buscar_contacto():
