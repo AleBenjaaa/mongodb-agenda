@@ -24,7 +24,8 @@ def actualizar_contacto(id):
     direccion = request.form['direccion']
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono:
+    if nombre and edad and categoria and telefono and edad.isdigit():
+        edad = int(edad) 
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
@@ -53,7 +54,8 @@ def nuevo_contacto():
     direccion = request.form['direccion']
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono:
+    if nombre and edad and categoria and telefono and edad.isdigit():
+        edad = int(edad)  
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
@@ -100,7 +102,6 @@ def eliminar_contacto(id):
     query = {"_id": ObjectId(id)}
     db.contactos.delete_one(query)
     return redirect(url_for('home'))
-
 
 @app.errorhandler(404)
 def notFound(error=None):
