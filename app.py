@@ -24,8 +24,11 @@ def actualizar_contacto(id):
     direccion = request.form['direccion']
     favorito = request.form.get('favorito', 'off') == 'on'
 
-    if nombre and edad and categoria and telefono and edad.isdigit():
-        edad = int(edad) 
+    if nombre and telefono:
+        if edad and not edad.isdigit() :
+            return notFound()
+        edad = int(edad) if edad else ''
+
         datos_de_contacto = [{
             'categoria': categoria,
             'telefono': telefono,
