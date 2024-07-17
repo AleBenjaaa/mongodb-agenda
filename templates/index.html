@@ -246,7 +246,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="editEdad" class="form-label">Edad</label>
-                                            <input type="text" class="form-control" id="editEdad" name="edad">
+                                            <input type="number" class="form-control" id="editEdad" name="edad">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="editCategoria" class="form-label">Categoría</label>
@@ -254,7 +254,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="editTelefono" class="form-label">Teléfono</label>
-                                            <input type="text" class="form-control" id="editTelefono" name="telefono" required>
+                                            <input type="number" class="form-control" id="editTelefono" name="telefono" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="editDireccion" class="form-label">Dirección</label>
@@ -381,7 +381,7 @@
         var favorito = button.getAttribute('data-favorito') === 'true';
 
         var form = document.getElementById('editContactForm');
-        form.action = '/contacto/' + id; // Set the form action to update the contact
+        form.action = '/contacto/' + id; 
 
         document.getElementById('editNombre').value = nombre;
         document.getElementById('editEdad').value = edad;
