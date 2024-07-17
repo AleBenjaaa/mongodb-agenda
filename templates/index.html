@@ -259,7 +259,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="editEdad" class="form-label">Edad</label>
-                                            <input type="number" class="form-control" id="editEdad" name="edad">
+                                            <input type="number" class="form-control" id="editEdad" name="edad" min="0" max="120">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="editCategoria" class="form-label">Categoría</label>
@@ -314,7 +314,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="Edad" class="form-label">Edad</label>
-                                            <input type="number" class="form-control" min="0" id="Edad" name="edad">
+                                            <input type="number" class="form-control" id="Edad" name="edad" min="0" max="120">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="Categoria" class="form-label">Categoría</label>
@@ -414,6 +414,18 @@
         document.getElementById('editDireccion').value = direccion;
         document.getElementById('editFavorito').checked = favorito;
     });
+
+    function rectriccion_edad(input) {
+        const edad = parseInt(input.value);
+        const errorSpan = document.getElementById('edadError') || document.getElementById('editEdadError');
+        if (edad < 0 || edad > 120) {
+            input.setCustomValidity("Edad debe estar entre 0 y 120 años.");
+            errorSpan.style.display = 'inline';
+        } else {
+            input.setCustomValidity("");
+            errorSpan.style.display = 'none';
+        }
+    }
 </script>
 
 </html>
