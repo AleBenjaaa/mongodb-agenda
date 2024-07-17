@@ -129,9 +129,9 @@
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal"
                                             data-bs-target="#contactoModal" data-id="{{ contacto._id }}"
                                             data-nombre="{{ contacto.nombre }}" data-edad="{{ contacto.edad }}"
-                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
+                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}"
+                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else '' }}"
+                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}"
                                             data-favorito="{{ contacto.favorito }}">
                                         </button>
                                         {{ contacto.edad }}
@@ -140,45 +140,42 @@
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal"
                                             data-bs-target="#contactoModal" data-id="{{ contacto._id }}"
                                             data-nombre="{{ contacto.nombre }}" data-edad="{{ contacto.edad }}"
-                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
+                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}"
+                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else '' }}"
+                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}"
                                             data-favorito="{{ contacto.favorito }}">
                                         </button>
-                                        {{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else
-                                        'N/A' }}
+                                        {{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal"
                                             data-bs-target="#contactoModal" data-id="{{ contacto._id }}"
                                             data-nombre="{{ contacto.nombre }}" data-edad="{{ contacto.edad }}"
-                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
+                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}"
+                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else '' }}"
+                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}"
                                             data-favorito="{{ contacto.favorito }}">
                                         </button>
-                                        {{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else
-                                        'N/A' }}
+                                        {{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else ''}}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal"
                                             data-bs-target="#contactoModal" data-id="{{ contacto._id }}"
                                             data-nombre="{{ contacto.nombre }}" data-edad="{{ contacto.edad }}"
-                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
+                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}"
+                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else '' }}"
+                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}"
                                             data-favorito="{{ contacto.favorito }}">
                                         </button>
-                                        {{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else
-                                        'N/A' }}
+                                        {{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}
                                     </td>
                                     <td class="table-cell">
                                         <button type="button" class="btn-invisible" data-bs-toggle="modal"
                                             data-bs-target="#contactoModal" data-id="{{ contacto._id }}"
                                             data-nombre="{{ contacto.nombre }}" data-edad="{{ contacto.edad }}"
-                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else 'N/A' }}"
-                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else 'N/A' }}"
+                                            data-categoria="{{ contacto.datos_de_contacto[0].categoria if contacto.datos_de_contacto else '' }}"
+                                            data-telefono="{{ contacto.datos_de_contacto[0].telefono if contacto.datos_de_contacto else '' }}"
+                                            data-direccion="{{ contacto.datos_de_contacto[0].direccion if contacto.datos_de_contacto else '' }}"
                                             data-favorito="{{ contacto.favorito }}">
                                             {% if contacto.favorito %}
                                             <i class="fas fa-heart "></i>
@@ -350,6 +347,7 @@
                 </div>
 
             </div>
+            <!-- Boton para agregar nuevo contacto-->
             <div class="d-flex justify-content-end mx-4">
                 <button type="button" class="btn btn-primary mt-4 btn-lg" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">

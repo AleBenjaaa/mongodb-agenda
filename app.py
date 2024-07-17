@@ -37,7 +37,7 @@ def actualizar_contacto(id):
         # Crea la lista de datos de contacto
         datos_de_contacto = [{
             'categoria': categoria,
-            'telefono': telefono,
+            'telefono': int(telefono),
             'direccion': direccion
         }]
         # Actualiza el contacto en la base de datos
@@ -75,7 +75,7 @@ def nuevo_contacto():
         # Crea la lista de datos de contacto
         datos_de_contacto = [{
             'categoria': categoria,
-            'telefono': telefono,
+            'telefono': int(telefono),
             'direccion': direccion
         }]
 

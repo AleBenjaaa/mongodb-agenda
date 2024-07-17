@@ -1,6 +1,8 @@
 import pymongo
 from bson import ObjectId
 
+# Prueba de funcionamiento de pymongo, el trabajo final es app.py <3
+
 class DatabaseAgenda:
     def __init__(self):
         try:
@@ -13,10 +15,10 @@ class DatabaseAgenda:
 
     def user_input(self):
         nombre = input('Ingrese el nombre de contacto: ')
-        edad = input('Ingrese la edad: ')
-        categoria = input('Ingrese la categoría de contacto (personal/trabajo, etc.): ')
+        edad = int(input('Ingrese la edad: '))
+        categoria = input('Ingrese la categoría de contacto: ')
         direccion = input('Ingrese la dirección: ')
-        telefono = input('Ingrese el teléfono: ')
+        telefono = int(input('Ingrese el teléfono: '))
         datos_de_contacto = [
             {
                 'categoria': categoria,
@@ -96,22 +98,22 @@ class DatabaseAgenda:
 
             resultado = self.collection.delete_many({"nombre": opcion})
             if resultado.deleted_count > 0:
-                print(f"Se eliminaron {resultado.deleted_count} contactos con el nombre {opcion}.")
+                print(f"Se eliminaron {resultado.deleted_count} contactos con el nombre: {opcion}.")
                 return
 
             resultado = self.collection.delete_many({"datos_de_contacto.telefono": opcion})
             if resultado.deleted_count > 0:
-                print(f"Se eliminaron {resultado.deleted_count} contactos con el teléfono {opcion}.")
+                print(f"Se eliminaron {resultado.deleted_count} contactos con el teléfono: {opcion}.")
                 return
 
-            print(f"No se encontraron contactos con el ID, nombre o teléfono {opcion}.")
+            print(f"No se encontraron contactos con el nombre o teléfono: {opcion}.")
         
         except Exception as e:
             print(f"Error al eliminar el contacto: {e}")
 
     def modificar_contacto(self):
         try:
-            opcion = input("Ingrese el ID, nombre o número de teléfono del contacto a modificar: ")
+            opcion = input("Ingrese el nombre o número de teléfono del contacto a modificar: ")
 
             if ObjectId.is_valid(opcion):
                 contacto = self.collection.find_one({'_id': ObjectId(opcion)})
@@ -123,7 +125,7 @@ class DatabaseAgenda:
 
                 nueva_categoria = input('Ingrese la nueva categoría de contacto: ')
                 nueva_direccion = input('Ingrese la nueva dirección: ')
-                nuevo_telefono = input('Ingrese el nuevo teléfono: ')
+                nuevo_telefono = int(input('Ingrese el nuevo teléfono: '))
 
                 nuevo_datos_de_contacto = [{
                     'categoria': nueva_categoria,
@@ -140,7 +142,7 @@ class DatabaseAgenda:
                     print(f'No se pudo modificar el contacto.')
 
             else:
-                print(f"No se encontró ningún contacto con el ID, nombre o teléfono {opcion}.")
+                print(f"No se encontró ningún contacto con el nombre o teléfono: {opcion}.")
 
         except Exception as e:
             print(f"Error al modificar el contacto: {e}")
@@ -150,11 +152,12 @@ def menu():
     agenda = DatabaseAgenda()
     while True:
         print("\nMenu:")
+        print('Prueba de funcionamiento de pymongo, el trabajo final es app.py <3')
         print("1. Insertar contacto")
         print("2. Buscar contacto por ID, nombre o teléfono")
         print('3. Listar contactos')
-        print("4. Eliminar contacto por ID, nombre o teléfono")
-        print("5. Modificar contacto por ID, nombre o teléfono")
+        print("4. Eliminar contacto por nombre o teléfono")
+        print("5. Modificar contacto por nombre o teléfono")
         print("0. Salir")
         choice = input("Seleccione una opción: ")
         
